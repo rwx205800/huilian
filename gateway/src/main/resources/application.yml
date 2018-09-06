@@ -1,0 +1,84 @@
+server:
+  port: 7981
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true  #是否显示ip
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+    appname: ${spring.application.name}
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zuul
+  session:
+    store-type: none
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+zuul:
+  sensitive-headers:
+  routes:
+    user:            #随便填写的路由名称
+      path: /api/user/**
+      serviceId: user
+---
+spring:
+  profiles: dev
+  resources:
+    add-mappings: false         # 关闭swagger
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+---
+spring:
+  profiles: test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+swagger.json.path: /api/repo/silverwallet
+---
+spring:
+  profiles: uat
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.30.13:8888/eureka,http://192.168.30.42:8888/eureka
+swagger.json.path: /api/repo/silverwallet
+---
+spring:
+  profiles: pre
+  resources:
+    add-mappings: false         # 关闭swagger
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.30.13:8888/eureka,http://192.168.30.42:8888/eureka
+---
+spring:
+  profiles: prd
+  resources:
+    add-mappings: false        # 关闭swagger
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.20.6.174:8888/eureka,http://172.20.6.175:8888/eureka

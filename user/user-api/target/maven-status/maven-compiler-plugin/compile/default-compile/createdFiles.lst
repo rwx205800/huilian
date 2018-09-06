@@ -1,0 +1,5 @@
+com\huilian\user\annotation\UserFeignProxy.class
+com\huilian\user\annotation\UserStarter.class
+com\huilian\user\dto\UserInfo.class
+com\huilian\user\api\IUserApi.class
+com\huilian\user\Swagger2Config.class

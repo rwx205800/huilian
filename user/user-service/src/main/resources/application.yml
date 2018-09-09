@@ -40,13 +40,13 @@ spring:
 
 # rabbitmq配置
   rabbitmq:
-    # host: 127.0.0.1
-    # port: 5672
-    username: devlop
-    password: devlop.#2018
+    host: 47.98.134.140
+    port: 5672
+    username: admin
+    password: admin
     publisher-confirms: true
     virtual-host: /
-    addresses: 192.168.2.252:5672,192.168.2.253:5672
+#    addresses: 192.168.2.252:5672,192.168.2.253:5672
 mybatis:
     typeAliasesPackage: com.lianhui.user.model
     mapperLocations: classpath:mybatis/*.xml

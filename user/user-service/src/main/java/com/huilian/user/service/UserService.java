@@ -3,6 +3,10 @@ package com.huilian.user.service;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.huilian.user.dto.UserInfo;
+import com.huilian.user.rabbit.TopicRabbitConfig;
+import com.huilian.user.rabbit.fanout.FanoutSender;
+import com.huilian.user.rabbit.hello.HelloSender;
+import com.huilian.user.rabbit.topic.TopicSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +20,26 @@ public class UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private HelloSender helloSender;
+    @Autowired
+    private FanoutSender fanoutSender;
+    @Autowired
+    private TopicSender topicSender;
 
     public UserInfo getUserInfo(long userId) {
 
-        String ss = redisService.getValue("foo");
+        String ss = redisService.getValue("hello");
         logger.info("redis value :" + ss );
 
+//        helloSender.send();
+//        fanoutSender.send();
         logger.info("获取用户：{}",userId);
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(userId);
         userInfo.setName("姓名");
+
+        topicSender.send(TopicRabbitConfig.message,userInfo);
         return userInfo;
     }
 

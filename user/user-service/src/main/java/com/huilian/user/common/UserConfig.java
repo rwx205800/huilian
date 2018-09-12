@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by renfei on 2018/6/27.
+ * master
  */
 @Configuration
 public class UserConfig {

@@ -80,16 +80,16 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!-- rocketmq-->
-        <!--<dependency>-->
-            <!--<groupId>io.github.rhwayfun</groupId>-->
-            <!--<artifactId>spring-boot-rocketmq-starter</artifactId>-->
-            <!--<version>0.0.3.RELEASE</version>-->
-        <!--</dependency>-->
         <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client</artifactId>
-            <version>4.3.0</version>
+            <groupId>io.github.rhwayfun</groupId>
+            <artifactId>spring-boot-rocketmq-starter</artifactId>
+            <version>0.0.3.RELEASE</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-client</artifactId>-->
+            <!--<version>4.3.0</version>-->
+        <!--</dependency>-->
         <!-- rabbitmq-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

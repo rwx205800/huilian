@@ -1,4 +1,4 @@
-package com.huilian.user.rocketMQ;
+package com.huilian.user.rocketMQ.demo;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -34,7 +34,7 @@ public class SyncProducer {
         producer.setVipChannelEnabled(false);
         //Launch the instance.
         producer.start();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             //Create a message instance, specifying topic, tag and message body.
             Message msg = new Message("TopicTest" /* Topic */,
                     "TagA" /* Tag */,

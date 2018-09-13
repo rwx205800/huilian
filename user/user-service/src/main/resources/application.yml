@@ -35,7 +35,7 @@ spring:
 
 # rocketmq 配置
   rocketmq:
-    nameServer: 192.168.2.253:9876;192.168.2.252:9876
+    nameServer: 47.98.134.140:9876
     producer-group-name: apiGroup
 
 # rabbitmq配置

@@ -81,9 +81,9 @@
         </dependency>
         <!-- rocketmq-->
         <dependency>
-            <groupId>io.github.rhwayfun</groupId>
-            <artifactId>spring-boot-rocketmq-starter</artifactId>
-            <version>0.0.3.RELEASE</version>
+            <groupId>com.maihaoche</groupId>
+            <artifactId>spring-boot-starter-rocketmq</artifactId>
+            <version>0.1.0</version>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.apache.rocketmq</groupId>-->

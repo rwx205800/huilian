@@ -1,12 +1,13 @@
 package com.huilian.user.service;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.huilian.user.dto.UserInfo;
 import com.huilian.user.rabbit.TopicRabbitConfig;
 import com.huilian.user.rabbit.fanout.FanoutSender;
 import com.huilian.user.rabbit.hello.HelloSender;
 import com.huilian.user.rabbit.topic.TopicSender;
+import com.huilian.user.rocketMQ.demo.DemoProducer;
+import com.maihaoche.starter.mq.base.MessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class UserService {
     private FanoutSender fanoutSender;
     @Autowired
     private TopicSender topicSender;
+    @Autowired
+    private DemoProducer producer;
 
     public UserInfo getUserInfo(long userId) {
 
@@ -40,6 +43,9 @@ public class UserService {
         userInfo.setName("姓名");
 
         topicSender.send(TopicRabbitConfig.message,userInfo);
+
+        producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
+
         return userInfo;
     }
 

@@ -6,7 +6,7 @@ import com.huilian.user.rabbit.TopicRabbitConfig;
 import com.huilian.user.rabbit.fanout.FanoutSender;
 import com.huilian.user.rabbit.hello.HelloSender;
 import com.huilian.user.rabbit.topic.TopicSender;
-import com.huilian.user.rocketMQ.demo.DemoProducer;
+import com.huilian.user.rocketMQ.DemoProducer;
 import com.maihaoche.starter.mq.base.MessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.huilian.user.rocketMQ.demo;
+package com.huilian.user.rocketMQ;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

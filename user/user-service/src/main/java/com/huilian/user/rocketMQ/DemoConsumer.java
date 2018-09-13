@@ -1,4 +1,4 @@
-package com.huilian.user.rocketMQ.demo;
+package com.huilian.user.rocketMQ;
 
 import com.maihaoche.starter.mq.annotation.MQConsumer;
 import com.maihaoche.starter.mq.base.AbstractMQPushConsumer;

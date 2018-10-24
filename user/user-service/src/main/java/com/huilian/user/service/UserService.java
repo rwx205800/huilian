@@ -46,6 +46,10 @@ public class UserService {
 
         producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
 
+//        topicSender.send(TopicRabbitConfig.message,userInfo);  //rabbitMQ
+
+        producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
+
         return userInfo;
     }
 

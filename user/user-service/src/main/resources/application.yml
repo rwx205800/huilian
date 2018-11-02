@@ -54,6 +54,9 @@ spring:
     publisher-confirms: true
     virtual-host: /
 #    addresses: 192.168.2.252:5672,192.168.2.253:5672
+feign:
+   hystrix:
+     enabled: true
 mybatis:
     typeAliasesPackage: com.lianhui.user.model
     mapperLocations: classpath:mybatis/*.xml

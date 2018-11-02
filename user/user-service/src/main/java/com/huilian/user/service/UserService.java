@@ -32,8 +32,8 @@ public class UserService {
 
     public UserInfo getUserInfo(long userId) {
 
-        String ss = redisService.getValue("hello");
-        logger.info("redis value :" + ss );
+//        String ss = redisService.getValue("hello");
+//        logger.info("redis value :" + ss );
 
 //        helloSender.send();
 //        fanoutSender.send();

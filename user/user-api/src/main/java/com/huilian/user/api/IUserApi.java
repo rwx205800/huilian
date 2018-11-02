@@ -1,6 +1,7 @@
 package com.huilian.user.api;
 
 import com.huilian.user.dto.UserInfo;
+import com.huilian.user.fallback.UserFallBack;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "user")
+@FeignClient(value = "user",fallback = UserFallBack.class)
 @Api(value = "/UserApi", tags = "UserAPI", description = "用户模块")
 @RequestMapping("v1")
 public interface IUserApi {

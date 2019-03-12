@@ -30,7 +30,7 @@ spring:
       max-idle: 30
       max-active: 600
       max-wait: 10000
-    password: 123
+    password: renfei
     timeout: 60000  # 连接超时时长（毫秒）
 
 # rocketmq 配置
@@ -46,13 +46,13 @@ spring:
     vip-channel-enabled: false
 
 # rabbitmq配置
-  rabbitmq:
-    host: 47.98.134.140
-    port: 5672
-    username: admin
-    password: admin
-    publisher-confirms: true
-    virtual-host: /
+#  rabbitmq:
+#    host: 47.98.134.140
+#    port: 5672
+#    username: admin
+#    password: admin
+#    publisher-confirms: true
+#    virtual-host: /
 #    addresses: 192.168.2.252:5672,192.168.2.253:5672
 feign:
    hystrix:

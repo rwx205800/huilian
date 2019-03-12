@@ -24,4 +24,11 @@ public class UserInfo {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

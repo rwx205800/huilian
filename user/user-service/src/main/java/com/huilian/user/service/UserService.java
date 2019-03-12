@@ -2,12 +2,9 @@ package com.huilian.user.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.huilian.user.dto.UserInfo;
-import com.huilian.user.rabbit.TopicRabbitConfig;
-import com.huilian.user.rabbit.fanout.FanoutSender;
-import com.huilian.user.rabbit.hello.HelloSender;
-import com.huilian.user.rabbit.topic.TopicSender;
 import com.huilian.user.rocketMQ.DemoProducer;
 import com.maihaoche.starter.mq.base.MessageBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +19,22 @@ public class UserService {
     @Autowired
     private RedisService redisService;
     @Autowired
-    private HelloSender helloSender;
-    @Autowired
-    private FanoutSender fanoutSender;
-    @Autowired
-    private TopicSender topicSender;
-    @Autowired
     private DemoProducer producer;
 
     public UserInfo getUserInfo(long userId) {
 
-//        String ss = redisService.getValue("hello");
-//        logger.info("redis value :" + ss );
+        String ss = redisService.getValue("hello");
+        logger.info("redis value is " + ss );
 
-//        helloSender.send();
-//        fanoutSender.send();
+        if (StringUtils.isEmpty(ss)){
+            redisService.setKey("hello","你好");
+        }
+
         logger.info("获取用户：{}",userId);
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(userId);
         userInfo.setName("姓名");
-
-        topicSender.send(TopicRabbitConfig.message,userInfo);
-
-        producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
-
-//        topicSender.send(TopicRabbitConfig.message,userInfo);  //rabbitMQ
+        logger.info("获取用户：{}",userInfo.toString());
 
         producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
 

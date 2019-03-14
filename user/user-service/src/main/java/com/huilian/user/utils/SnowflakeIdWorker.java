@@ -1,4 +1,4 @@
-package com.huilian.user.idUtils;
+package com.huilian.user.utils;
 
 /**
  * Twitter_Snowflake<br>

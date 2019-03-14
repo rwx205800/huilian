@@ -50,11 +50,10 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.33</version>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.10</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.projectlombok</groupId>-->
+			<!--<artifactId>lombok</artifactId>-->
+			<!--<version>1.16.10</version>-->
 	</dependencies>
 
 	<!--<build>

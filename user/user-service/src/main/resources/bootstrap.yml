@@ -5,7 +5,7 @@ current.application.name: user
 current.application.port: 9016
 ##eureka地址
 dev.eureka.zone: http://localhost:8761/eureka
-test.eureka.zone: http://testdiscover.yinpiao.com/eureka
+test.eureka.zone: http://localhost:8761/eureka
 uat.eureka.zone: http://192.168.30.13:8888/eureka,http://192.168.30.42:8888/eureka
 pre.eureka.zone: http://prediscover.yinpiao.com/eureka
 prd.eureka.zone: http://172.20.6.174:8888/eureka,http://172.20.6.175:8888/eureka

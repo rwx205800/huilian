@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * 全局异常处理
@@ -56,6 +58,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         RuntimeException exception = (RuntimeException) e;
         return new ErrorResponseEntity(400, exception.getMessage());
+    }
+
+    @ExceptionHandler(IOException.class)
+    public ErrorResponseEntity runtimeExceptionHandler1(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        return new ErrorResponseEntity(400, e.getMessage());
+    }
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public ErrorResponseEntity runtimeExceptionHandler2(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        return new ErrorResponseEntity(400, e.getMessage());
     }
 
     /**

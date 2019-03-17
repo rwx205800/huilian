@@ -2,10 +2,14 @@ package com.huilian.user.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 
-public class UserInfo {
+public class UserInfo implements Serializable {
+    private static final long serialVersionUID = 1301229931511651654L;
+
     @ApiModelProperty("用户ID")
     @NotNull(message = "用户ID不能为空")
     private Long userId;

@@ -1,5 +1,7 @@
 package com.huilian.user.resp;
 
+import java.io.Serializable;
+
 /**
  * <p>Title: huilian</p>
  * <p>Description: </p>
@@ -7,8 +9,9 @@ package com.huilian.user.resp;
  * @author renfei
  * @date 2019/3/15
  */
-public class ErrorResponseEntity {
+public class ErrorResponseEntity implements Serializable{
 
+    private static final long serialVersionUID = -8125909785640543696L;
     private int code;
     private String message;
     private Object data;

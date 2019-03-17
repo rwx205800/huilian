@@ -2,6 +2,7 @@ package com.huilian.user.fallback;
 
 import com.huilian.user.api.IUserApi;
 import com.huilian.user.dto.UserInfo;
+import com.huilian.user.resp.ErrorResponseEntity;
 import feign.hystrix.FallbackFactory;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Component;
@@ -22,16 +23,14 @@ public class UserFallBack implements FallbackFactory<IUserApi> {
     public IUserApi create(Throwable throwable) {
         return new IUserApi() {
             @Override
-            public UserInfo getUserInfo(@ApiParam(name = "userId", value = "userId", required = true) @RequestParam(value = "userId") Long userId) {
-                UserInfo userInfo = new UserInfo();
-                userInfo.setUserId(1);
-                userInfo.setName("rf");
-                return userInfo;
+            public ErrorResponseEntity getUserInfo(@ApiParam(name = "userId", value = "userId", required = true) @RequestParam(value = "userId") Long userId) {
+                return new ErrorResponseEntity(500,"user service is not work");
             }
 
             @Override
-            public String save(@ApiParam(value = "用户信息", required = true) @RequestBody UserInfo userInfo) {
-                return "save service is not work";
+            public ErrorResponseEntity save(@ApiParam(value = "用户信息", required = true) @RequestBody UserInfo userInfo) {
+                System.out.println("user service is not work");
+                return new ErrorResponseEntity(500,"save service is not work");
             }
         };
     }

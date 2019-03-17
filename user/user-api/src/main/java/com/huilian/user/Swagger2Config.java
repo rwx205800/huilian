@@ -31,8 +31,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()//
-                .title("抽奖")// 标题
-                .description("抽奖引擎")// 描述
+                .title("测试")// 标题
+                .description("测试服务")// 描述
                 //			.termsOfServiceUrl("http://www.yinpiao.com")//
 //				.contact(new Contact("hzm", "http://www.yinpiao.com", "415168305@qq.com"))// 联系
                 //.license("Apache License Version 2.0")// 开源协议

@@ -50,7 +50,7 @@ public class PreRequestLogFilter extends ZuulFilter {
             LOGGER.info(key + ":" + value);
         }
 
-        UserInfo userInfo = userApi.getUserInfo(1l);//调用用户服务接口
+//        UserInfo userInfo = userApi.getUserInfo(1l);//调用用户服务接口
 
         LOGGER.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
 

@@ -47,4 +47,13 @@ public class ErrorResponseEntity {
         this.message = message;
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "ErrorResponseEntity{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 /**
  * @author renfei
@@ -47,7 +48,7 @@ public class LogAspect {
         }
 
         long start = System.currentTimeMillis();
-//        logger.info("执行{}-{} 开始，参数：{}", targetClass.getName(), methodName, args == null ? "" : Arrays.asList(args));
+        logger.info("执行{}-{} 开始，参数：{}", targetClass.getName(), methodName, args == null ? "" : Arrays.asList(args));
         try {
             result = joinPoint.proceed();
         } catch (CustomException e) {

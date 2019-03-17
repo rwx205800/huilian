@@ -2,12 +2,12 @@ package com.huilian.user.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 public class UserInfo {
     @ApiModelProperty("用户ID")
-    @NotEmpty(message = "用户ID不能为空")
+    @NotNull(message = "用户ID不能为空")
     private Long userId;
     @ApiModelProperty("姓名")
     @NotBlank(message = "姓名不能为空")

@@ -2,7 +2,7 @@ package com.huilian.user.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.huilian.user.dto.UserInfo;
-import com.huilian.user.resp.ErrorResponseEntity;
+import com.huilian.user.resp.CommonResponse;
 import com.huilian.user.rocketMQ.DemoProducer;
 import com.maihaoche.starter.mq.base.MessageBuilder;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +22,7 @@ public class UserService {
     @Autowired
     private DemoProducer producer;
 
-    public ErrorResponseEntity getUserInfo(long userId) {
+    public CommonResponse getUserInfo(long userId) {
 
         String ss = redisService.getValue("hello");
         logger.info("redis value is " + ss );
@@ -39,11 +39,11 @@ public class UserService {
 
         producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
 
-        return new ErrorResponseEntity(0,"ok",userInfo);
+        return new CommonResponse(0,"ok",userInfo);
     }
 
-    public ErrorResponseEntity save(UserInfo userInfo) {
+    public CommonResponse save(UserInfo userInfo) {
         logger.info("保存用户：{}", JSONObject.toJSONString(userInfo));
-        return new ErrorResponseEntity(0,"保存成功");
+        return CommonResponse.success();
     }
 }

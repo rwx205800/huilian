@@ -2,7 +2,7 @@ package com.huilian.user.api;
 
 import com.huilian.user.dto.UserInfo;
 import com.huilian.user.fallback.UserFallBack;
-import com.huilian.user.resp.ErrorResponseEntity;
+import com.huilian.user.resp.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -21,10 +21,10 @@ import javax.validation.Valid;
 public interface IUserApi {
     @RequestMapping(value = "/user/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "获取用户信息", httpMethod = "GET", tags = "UserAPI",response= UserInfo.class)
-    ErrorResponseEntity getUserInfo(@ApiParam(name = "userId", value = "userId", required = true) @RequestParam(value = "userId") Long userId);
+    CommonResponse getUserInfo(@ApiParam(name = "userId", value = "userId", required = true) @RequestParam(value = "userId") Long userId);
 
     @RequestMapping(value = "/user/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "保存", httpMethod = "POST", tags = "UserAPI", response = String.class)
-    ErrorResponseEntity save(@ApiParam(value = "用户信息", required = true)@Valid @RequestBody UserInfo userInfo);
+    CommonResponse save(@ApiParam(value = "用户信息", required = true)@Valid @RequestBody UserInfo userInfo);
 
 }

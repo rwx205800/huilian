@@ -1,6 +1,6 @@
 package com.huilian.user.exception;
 
-import com.huilian.user.resp.ErrorResponseEntity;
+import com.huilian.user.resp.CommonResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,10 +37,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @return 响应结果
      */
     @ExceptionHandler(CustomException.class)
-    public ErrorResponseEntity customExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+    public CommonResponse customExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         CustomException exception = (CustomException) e;
-        return new ErrorResponseEntity(exception.getCode(), exception.getMessage());
+        return new CommonResponse(exception.getCode(), exception.getMessage(),null);
     }
 
     /**
@@ -54,22 +54,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @return 响应结果
      */
     @ExceptionHandler(RuntimeException.class)
-    public ErrorResponseEntity runtimeExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+    public CommonResponse runtimeExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         RuntimeException exception = (RuntimeException) e;
-        return new ErrorResponseEntity(400, exception.getMessage());
+        return new CommonResponse(500, exception.getMessage(),null);
     }
 
     @ExceptionHandler(IOException.class)
-    public ErrorResponseEntity runtimeExceptionHandler1(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+    public CommonResponse runtimeExceptionHandler1(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
-        return new ErrorResponseEntity(400, e.getMessage());
+        return new CommonResponse(500, e.getMessage(),null);
     }
 
     @ExceptionHandler(FileNotFoundException.class)
-    public ErrorResponseEntity runtimeExceptionHandler2(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+    public CommonResponse runtimeExceptionHandler2(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
-        return new ErrorResponseEntity(400, e.getMessage());
+        return new CommonResponse(500, e.getMessage(),null);
     }
 
     /**
@@ -80,14 +80,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                              HttpStatus status, WebRequest request) {
         if (ex instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException exception = (MethodArgumentNotValidException) ex;
-            return new ResponseEntity<>(new ErrorResponseEntity(status.value(), exception.getBindingResult().getAllErrors().get(0).getDefaultMessage()), status);
+            return new ResponseEntity<>(new CommonResponse(status.value(), exception.getBindingResult().getAllErrors().get(0).getDefaultMessage(),null), status);
         }
         if (ex instanceof MethodArgumentTypeMismatchException) {
             MethodArgumentTypeMismatchException exception = (MethodArgumentTypeMismatchException) ex;
             logger.error("参数转换失败，方法：" + exception.getParameter().getMethod().getName() + "，参数：" + exception.getName()
                     + ",信息：" + exception.getLocalizedMessage());
-            return new ResponseEntity<>(new ErrorResponseEntity(status.value(), "参数转换失败"), status);
+            return new ResponseEntity<>(new CommonResponse(status.value(), "参数转换失败",null), status);
         }
-        return new ResponseEntity<>(new ErrorResponseEntity(status.value(), "参数转换失败"), status);
+        return new ResponseEntity<>(new CommonResponse(status.value(), "参数转换失败",null), status);
     }
 }

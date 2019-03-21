@@ -1,6 +1,7 @@
 package com.huilian.user.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.huilian.user.dao.UserDao;
 import com.huilian.user.dto.UserInfo;
 import com.huilian.user.resp.CommonResponse;
 import com.huilian.user.rocketMQ.DemoProducer;
@@ -10,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by renfei on 2018/8/6.
@@ -21,6 +25,8 @@ public class UserService {
     private RedisService redisService;
     @Autowired
     private DemoProducer producer;
+    @Autowired
+    private UserDao userDao;
 
     public CommonResponse getUserInfo(long userId) {
 
@@ -36,6 +42,9 @@ public class UserService {
         userInfo.setUserId(userId);
         userInfo.setName("姓名");
         logger.info("获取用户：{}",userInfo.toString());
+
+        List<Map<String,Object>>  list =  userDao.getUser();
+        logger.info(JSONObject.toJSONString(list));
 
         producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
 

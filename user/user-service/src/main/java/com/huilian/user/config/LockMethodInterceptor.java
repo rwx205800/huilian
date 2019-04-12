@@ -1,6 +1,7 @@
-package com.huilian.user.service;
+package com.huilian.user.config;
 
 import com.huilian.user.annotation.CacheLock;
+import com.huilian.user.service.CacheKeyGenerator;
 import com.huilian.user.utils.RedisLockHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

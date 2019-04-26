@@ -1,5 +1,5 @@
 #datasource
-datasource.ip_port: 192.168.11.9:3306
+datasource.ip_port: 47.98.134.140:3306
 datasource.username: root
 datasource.password: 123456
 

@@ -35,21 +35,19 @@ public class UserService {
         String ss = redisService.getValue("hello");
         logger.info("redis value :" + ss );
 
-//        helloSender.send();
-//        fanoutSender.send();
+        System.out.println("************rabbitMQ start**************");
+        helloSender.send();
+        fanoutSender.send();
         logger.info("获取用户：{}",userId);
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(userId);
         userInfo.setName("姓名");
-
         topicSender.send(TopicRabbitConfig.message,userInfo);
+        System.out.println("************rabbitMQ end**************");
 
+        System.out.println("************rocketMQ start**************");
         producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
-
-//        topicSender.send(TopicRabbitConfig.message,userInfo);  //rabbitMQ
-
-        producer.syncSend(MessageBuilder.of(userInfo).topic("TopicTest").build());
-
+        System.out.println("************rocketMQ end**************");
         return userInfo;
     }
 

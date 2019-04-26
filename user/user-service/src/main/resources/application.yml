@@ -1,7 +1,7 @@
 spring:
   datasource:
     name: user
-    url: jdbc:mysql://${datasource.ip_port}/plancoin_exchange_dev
+    url: jdbc:mysql://${datasource.ip_port}/guns
     username: ${datasource.username}
     password: ${datasource.password}
     # 使用druid数据源
